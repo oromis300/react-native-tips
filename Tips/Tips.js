@@ -240,6 +240,10 @@ export default class Tips extends PureComponent {
 
     this.requestAnimationFrame(() => {
       this.view.measure((x, y, width, height, pageX, pageY) => {
+		if(pageX < 0) {
+		  pageX = 0;
+		  pageY = pageY - height;
+		}
         this.setState(state => ({
           componentLeft: pageX,
           componentTop: pageY,
